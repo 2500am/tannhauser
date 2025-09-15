@@ -1,34 +1,27 @@
-#define PIN_LED 13
-unsigned int count, toggle ;
+#define LED_PIN 7
 
 void setup() {
-  pinMode(PIN_LED, OUTPUT) ;
-  Serial.begin(115200) ;
-  while(!Serial)
-  {
-    ;
+  pinMode(LED_PIN, OUTPUT);
+}
+
+void loop() {
+  // First Turn
+  digitalWrite(LED_PIN, HIGH);
+  delay(1000);
+  digitalWrite(LED_PIN, LOW);
+  delay(1000);
+
+  // Second Turn
+  for (int i = 0; i < 5; i++) {
+    digitalWrite(LED_PIN, HIGH);
+    delay(100);
+    digitalWrite(LED_PIN, LOW);
+    delay(100);
+  }
+  
+  digitalWrite(LED_PIN, 1);
+  
+  while (1) {
     
   }
-  Serial.println("Hello World!") ;
-  count = toggle = 0 ;
-  digitalWrite(PIN_LED, toggle) ; 
-  
-}
-
-void loop() {   
-  Serial.println(++count) ;
-  toggle = toggle_state(toggle) ;
-  digitalWrite(PIN_LED, toggle) ;
-  delay(1000) ;
-  
-}
-
-int toggle_state(int toggle){
-  if(toggle == 0) 
-  {
-    return toggle = 1 ;
-  }else {
-    return toggle = 0 ; 
-  }
-  
 }
